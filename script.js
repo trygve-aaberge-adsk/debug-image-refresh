@@ -51,8 +51,8 @@ async function loadImage(refresh) {
   }
 
   const res = await fetch(url.toString(), {
+    cache: refresh ? "reload" : "default",
     headers: {
-      "cache-control": refresh ? "max-age=0" : "",
       ...(refresh === "header" ? { "x-refresh": "true" } : {}),
     },
   });
